@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Vente en ligne de produits Français Artisanaux">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/42fbe59e45.js" crossorigin="anonymous"></script>
     <meta name="robots" content="INDEX, FOLLOW">
     <title>Orinoco!</title>
@@ -11,13 +12,16 @@
 <body>
     <header>
         <img src="images/orinoco.PNG" alt="logo Orinoco">
-        <p>Mon compte</p>
+        <ul>
+            <li><a href="#">Mon compte</a></li>
+            <li><a href="#">Mon panier</a></li>
+        </ul>
     </header>
     <!-- barre de recherche -->
     <nav>
         <form action="#">
             <label>Toutes catégories</label>
-            <input type="text" name="Ville" placeholder="Marseille, France" class="champs"/>
+            <input type="text" name="produits" placeholder="your theme 'Teddies'" class="champs"/>
             <input type="submit" value="Rechercher" class="fas fa-search"/>
         </form>
     </nav>
@@ -29,6 +33,14 @@
             </div>
         </section>
     </main>
-    <script src="script.js"></script>
+    <footer>
+        <h3>Orinoco!</h3>
+        <ul>
+            <li><a href="#">Proposer un produit</a></li>
+            <li><a href="#">mentions légales</a></li>
+            <li><a href="#">contact</a></li>
+        </ul>
+    </footer>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
