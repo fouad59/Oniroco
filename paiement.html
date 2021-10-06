@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Vente en ligne de produits Français Artisanaux" />
+        <title>Orinoco - La boutique Thematique</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Themify Icons -->
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header>
+            <h1 class="site-heading text-center rounded text-faded d-none d-lg-block">
+                <span class="site-heading-upper text-primary"><img class="logoSite" src="images/orinoco.PNG" alt="logo"></span>
+                <span class="site-heading-lower text-primary mb-3">TEDDIES</span>
+            </h1>
+        </header>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand d-lg-none" href="index.html"><img class="logoSite" src="images/matcherator.jpeg" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.html">Accueil</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main class="page-section clearfix" id="main">
+            <div>
+                <!-- Shopping Summery -->
+                <table id="tableau" class="table shopping-summery rounded">
+                </table>
+                <!--/ End Shopping Summery -->
+			</div>
+            <div class="container">
+                <section class="intro" id="sectionMain">
+                    <div class="contain">
+                        <div class="row">
+                            <div class="col-lg-4 col-12">
+                                <div class="order-details rounded">
+                                    <!-- Order Widget -->
+                                    <div class="single-widget">
+                                        <h2>PANIER</h2>
+                                        <div class="content">
+                                            <ul>
+                                                <li>Sous Total<span class="subTotal"></span></li>
+                                                <li>Code Promo.<span></span></li>
+                                                <li>Total<span class="lastTotal"></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--/ End Order Widget -->
+                                    <!-- Order Widget -->
+                                    <div class="single-widget">
+                                        <h2>Moyens de paiements</h2>
+                                        <div class="content">
+                                            <fieldset>
+                                                <p>
+                                                <input name="moyen" id="cb" type="radio">
+                                                <label for="cb"> Carte Bancaire</label>
+                                                </p>
+                                                <p>
+                                                <input name="moyen" id="paypal" type="radio">
+                                                <label for="cb"> PayPal</label>
+                                                </p>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <!--/ End Order Widget -->
+                                    <!-- Payment Method Widget -->
+                                    <div class="single-widget payement">
+                                        <div class="content band">
+                                            <img src="images/payment-method.png" alt="#">
+                                        </div>
+                                    </div>
+                                    <!--/ End Payment Method Widget -->
+                                </div>
+                            </div> 
+                            <div class="col-lg-8 col-12">
+                                <div class="checkout-form">
+                                    <h2>Finalisez votre commande</h2>
+                                    <p>Merci de remplir vos informations pour réaliser la commande</p>
+                                    <!-- Form -->
+                                    <form id="form" method="post" action="#">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Nom</label>
+                                                    <input id="lastName" class="rounded" type="text" pattern="^[a-zA-Z_ ]*$" name="name" title="format incorect" placeholder="" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Prénom</label>
+                                                    <input id="firstName" class="rounded" type="text" pattern="^[a-zA-Z_ ]*$" name="first-name" title="format incorect" placeholder="" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Adresse</label>
+                                                    <input id="address" class="rounded" type="text" name="address" placeholder="" pattern="[0-9]{1,3}(([,. ]?){1}[-a-zA-Zàâäéèêëïîôöùûüç']+)*" title="format incorect" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Ville</label>
+                                                    <input id="city" class="rounded" type="text" name="city" pattern="^[a-zA-Z_ ]*$" placeholder="" title="format incorect" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input id="email" class="rounded" type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <form class="form-group">
+                                                    <input name="Coupon" class="rounded paddingCR" disabled="disabled" type="text" placeholder="Code réduction">
+                                                    <button class="buttons">Paiement</button>
+                                                </form>
+                                                <div class="form-group create-account">
+                                                    <input id="cbox" type="checkbox">
+                                                    <label>Créer un compte?</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--/ End Form -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <footer class="footer text-faded text-center py-5">
+            <div class="container"><p class="m-0 small">Contact</p></div>
+        </footer>
+        <script src="js/scriptPanier.js"></script>
+    </body>
+</html>
