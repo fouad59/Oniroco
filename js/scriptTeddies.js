@@ -1,11 +1,13 @@
-let categories = ['Teddy']
 //création de tableau pour les produits
+let categories = ['Teddy']
+
+//affichage du prix au bon format
 let sectionMain = document.getElementById('sectionMain')
 function get_price(price){
     var str = price.toString()
     return str.slice(0, str.length - 2) + ',' + str.slice(-2); 
 }
-// boucle 
+// boucle pour la création des card de produit
 function createProduct(data, section) {
     var div = document.createElement("div")
     div.innerHTML =
@@ -47,6 +49,7 @@ function createProduct(data, section) {
     select.innerHTML = options
 }
 
+// récupération des données depuis l'API
 function getOneTeddy(id) {
     fetch('http://localhost:3000/api/teddies/' + id )
     .then(response => {
@@ -64,6 +67,7 @@ function getOneTeddy(id) {
 let id = new URL(window.location.href).searchParams.get('id')
 getOneTeddy(id)
 
+//Ajouter les élements sélectionnés dans le localStorage
 function updateCart(quantite, produit, add) {
     let presenceCart = localStorage.getItem(produit._id)
     quantite = parseInt(quantite)
@@ -105,6 +109,7 @@ function updateCart(quantite, produit, add) {
     displayTotalPanier()
 }
 
+//Mettre à jours la quantité de produit dans la bulle
 function displayTotalPanier () {
     let total = 0
     for(let key of Object.keys(localStorage)) {

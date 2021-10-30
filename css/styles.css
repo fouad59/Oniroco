@@ -6299,6 +6299,7 @@ textarea.form-control-lg {
 
 .d-flex {
   display: flex !important;
+  justify-content: center;
 }
 
 .d-inline-flex {
@@ -11582,4 +11583,8 @@ tbody tr {
   border-color: orange;
   border-radius: 0.5em;
   background-color: gray;
+}
+
+.red {
+  color: red;
 }

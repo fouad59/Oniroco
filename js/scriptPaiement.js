@@ -1,6 +1,8 @@
-let categories = ['Teddies']
 //création de tableau pour les produits
+let categories = ['Teddies']
 let tableau = document.getElementById('tableau')
+
+//Affichage du prix
 function get_price(price){
     if(price == 0){
         return '00,00€'
@@ -10,7 +12,8 @@ function get_price(price){
     }
 }
 
-function createProductPanier(table) {
+//Mise en place de l'en-tête du tableau de produit
+function createHeadTable(table) {
     let thead = document.createElement("thead")
     thead.innerHTML =
         '<tr class="main-hading">'
@@ -23,8 +26,9 @@ function createProductPanier(table) {
         +'</tr>'
     table.appendChild(thead)
 }
-createProductPanier(tableau)
+createHeadTable(tableau)
 
+//le panier est vide
 function emptyCart (table) {
     let tbody = document.createElement("tbody")
     tbody.innerHTML =
@@ -36,6 +40,7 @@ function emptyCart (table) {
     table.appendChild(tbody)
 }
 
+//ligne produit du tabeau
 function AddProductRow (table, element, key) {
     let tbody = document.createElement("tbody")
     let totalPriceProduct = get_price(element.quantity * element.price)
@@ -68,6 +73,7 @@ function AddProductRow (table, element, key) {
     table.appendChild(tbody)
 }
 
+//Mise en place du tableau
 function displayTotalPanier () {
     if (localStorage.length == 0) {
         emptyCart(tableau)
@@ -80,14 +86,13 @@ function displayTotalPanier () {
         let erase = document.getElementsByClassName('erase')
         for(let button of plus) {
             button.addEventListener('click', function(){
-                let key = button.dataset.id
-                button.previousSibling.value = parseInt(button.previousSibling.value) +1
-                let quantity = button.previousSibling.value
+                let key = this.dataset.id
+                this.previousSibling.value = parseInt(this.previousSibling.value) +1
+                let quantity = this.previousSibling.value
                 addQuantityProduct (key, quantity)
-                let parent = button.parentElement.parentElement.parentElement
+                let parent = this.parentElement.parentElement.parentElement
                 let tdTotal = parent.getElementsByClassName('total-amount')[0]
                 tdTotal.innerHTML = get_price(quantity*JSON.parse(localStorage[key]).price)
-                document.querySelector('.inputNumber').setAttribute('value', quantity)
             })
         }
         for(let button of minus) {
@@ -102,7 +107,6 @@ function displayTotalPanier () {
                 let parent = button.parentElement.parentElement.parentElement
                 let tdTot = parent.getElementsByClassName('total-amount')[0]
                 tdTot.innerHTML = get_price(quantity*JSON.parse(localStorage[key]).price)
-                document.querySelector('.inputNumber').setAttribute('value', quantity)
                 }
             })
         }
@@ -148,17 +152,23 @@ function cartSum () {
     }
     document.querySelector('.subTotal').innerHTML = get_price(totalPrice)
     document.querySelector('.lastTotal').innerHTML = get_price(totalPrice + codePromo)
+    return totalPrice
 }
 cartSum ()
 
 function postName(e) {
-    e.preventDefault();
     let submit = document.querySelector("#submit");
     let inputName = document.querySelector("#lastName");
     let inputfirstName = document.querySelector("#firstName");
     let inputAdress = document.querySelector("#address");
     let inputCity = document.querySelector("#city");
     let inputMail = document.querySelector("#email");
+
+    //validation du formulaire
+    const regexName = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
+    const regexCity = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+)){1,10}$/;
+    const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
+    const regexAddress = /^(([a-zA-ZÀ-ÿ0-9]+[\s\-]{1}[a-zA-ZÀ-ÿ0-9]+)){1,10}$/;
 
     let contact = {
         'firstName': inputfirstName.value,
@@ -167,28 +177,39 @@ function postName(e) {
         'city': inputCity.value,
         'email': inputMail.value
     }
-    console.log('contact')
-    console.log(contact)
 
-    var cat = Object.keys(localStorage);
-    var products = [];
-    cat.forEach(function(i){
-        products.push(i);
-    });
+    if (
+        (regexMail.test(contact.email) == true) &
+        (regexName.test(contact.firstName) == true) &
+        (regexName.test(contact.lastName) == true) &
+        (regexCity.test(contact.city) == true) &
+        (regexAddress.test(contact.address) == true)
+    ) {
+        e.preventDefault();
 
-    console.log('products')
-    console.log(products)
+        var cat = Object.keys(localStorage);
+        var products = [];
+        cat.forEach(function(i){
+            products.push(i);
+        });
 
-    fetch("http://localhost:3000/api/teddies/order", {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(products, contact)
-    }).then(response => response.json())
-    .then(response => alert(JSON.stringify(response)))
-    .catch(error => alert("Erreur : " + error));
+        let envoiRequest = fetch("http://localhost:3000/api/teddies/order", {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({products, contact})
+        }).then(response => response.json())
+        .then(response => {
+            localStorage.setItem('totalPrice', cartSum())
+            localStorage.setItem('orderId',response.orderId)
+            localStorage.setItem('Name',inputfirstName.value)
+            window.location.href = 'confirmation.html'
+        })
+        .catch(error => alert("Erreur : " + error));
+    } else {
+    }
 }
 
 let envoiFormulaire = document.querySelector('.buttons')
