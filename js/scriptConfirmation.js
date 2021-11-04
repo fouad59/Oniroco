@@ -11,12 +11,6 @@ function textFinal(tab) {
     let lastName = localStorage.Name
     let id = localStorage.orderId
     let price = get_price(localStorage.totalPrice)
-    console.log('lastName')
-    console.log(lastName)
-    console.log('id')
-    console.log(id)
-    console.log('price')
-    console.log(price)
 
     div.innerHTML =
         '<div class="bg-faded p-5 text-center rounded">'
@@ -34,13 +28,13 @@ function textFinal(tab) {
 
 textFinal(summary)
 
-function pageAcceuil(e) {
+function pageAccueil(e) {
     e.preventDefault();
     document.location.href = "index.html"
 }
 
-let retourAcceuil = document.querySelector('.buttons')
-retourAcceuil.addEventListener("click", pageAcceuil )
+let retourAccueil = document.querySelector('.buttons')
+retourAccueil.addEventListener("click", pageAccueil )
 
 
 

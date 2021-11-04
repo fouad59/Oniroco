@@ -1,4 +1,4 @@
-let categories = ['Teddies']
+let categories = []
 //création de tableau pour les produits
 let sectionMain = document.getElementById('sectionMain')
 function get_price(price){

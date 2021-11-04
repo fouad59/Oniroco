@@ -41,7 +41,7 @@ function emptyCart (table) {
 }
 
 //ligne produit du tabeau
-function AddProductRow (table, element, key) {
+function addProductRow (table, element, key) {
     let tbody = document.createElement("tbody")
     let totalPriceProduct = get_price(element.quantity * element.price)
     tbody.innerHTML =
@@ -79,7 +79,7 @@ function displayTotalPanier () {
         emptyCart(tableau)
     }else {
         for(let key of Object.keys(localStorage)) {
-            AddProductRow (tableau, JSON.parse(localStorage[key]), key)
+            addProductRow (tableau, JSON.parse(localStorage[key]), key)
         }
         let plus = document.getElementsByClassName('plus')
         let minus = document.getElementsByClassName('minus')

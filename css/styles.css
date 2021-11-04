@@ -11223,15 +11223,14 @@ p {
 }
 .single-widget .content ul li {
 	display: block;
-	padding: 0px 30px;
 	font-size: 15px;
 	font-weight: 400;
 	color: #333;
 	margin-bottom: 12px;
+  padding-right: 2em;
 }
 .single-widget .content ul li span{
-	display:inline-block;
-	float:right;
+  float:right;
 }
 .single-widget .content ul li.last {
 	padding-top: 12px;
