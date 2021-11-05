@@ -183,7 +183,8 @@ function postName(e) {
         (regexName.test(contact.firstName) == true) &
         (regexName.test(contact.lastName) == true) &
         (regexCity.test(contact.city) == true) &
-        (regexAddress.test(contact.address) == true)
+        (regexAddress.test(contact.address) == true) &
+        (cartSum() != 0)
     ) {
         e.preventDefault();
 
@@ -208,8 +209,12 @@ function postName(e) {
             window.location.href = 'confirmation.html'
         })
         .catch(error => alert("Erreur : " + error));
-    } else {
-    }
+    } else if(
+        (cartSum() == 0)
+    ) {
+        alert('votre panier est vide');
+        window.location.href = 'index.html'
+    } else {}
 }
 
 let envoiFormulaire = document.querySelector('.buttons')
